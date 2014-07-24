@@ -1,8 +1,34 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xander.UI.Web", "Xander.UI.Web\Xander.UI.Web.csproj", "{F9CCDF65-E889-4DDD-8525-7C315A9B386D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{7784B4AF-C5B4-4B4B-9B5C-B662EBBB7CC1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Main", "Main", "{4A4DD072-4ABD-4B6E-BDA3-91C8EFA74053}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xander.UI.Web.Tests", "Xander.UI.Web.Tests\Xander.UI.Web.Tests.csproj", "{3B720EAD-38EF-42BE-9138-D03EA94A1829}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F9CCDF65-E889-4DDD-8525-7C315A9B386D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9CCDF65-E889-4DDD-8525-7C315A9B386D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9CCDF65-E889-4DDD-8525-7C315A9B386D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9CCDF65-E889-4DDD-8525-7C315A9B386D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B720EAD-38EF-42BE-9138-D03EA94A1829}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B720EAD-38EF-42BE-9138-D03EA94A1829}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B720EAD-38EF-42BE-9138-D03EA94A1829}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B720EAD-38EF-42BE-9138-D03EA94A1829}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3B720EAD-38EF-42BE-9138-D03EA94A1829} = {7784B4AF-C5B4-4B4B-9B5C-B662EBBB7CC1}
+		{F9CCDF65-E889-4DDD-8525-7C315A9B386D} = {4A4DD072-4ABD-4B6E-BDA3-91C8EFA74053}
 	EndGlobalSection
 EndGlobal
