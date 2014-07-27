@@ -1,4 +1,35 @@
-﻿using System;
+﻿#region MIT License
+/*
+The MIT License (MIT)
+
+Copyright (c) 2014 Colin Angus Mackay
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+********************************************************************************
+For more information visit https://github.com/colinangusmackay/Xander.UI.Web/
+********************************************************************************
+*/
+#endregion
+
+using System;
 using System.Text;
 using System.Web;
 using Xander.UI.Web.Utils;
@@ -130,73 +161,93 @@ namespace Xander.UI.Web
 
                 if (_size != _defaultSize)
                 {
-                    sb.Append(_queryDelim);
-                    sb.Append("s=");
-                    sb.Append(_size);
+                    AppendSize(sb);
                     inQueryComponent = true;
                 }
 
                 if (_defaultImage != GravatarDefaultImage.NotSet)
                 {
-                    sb.Append(inQueryComponent ? _querySubdelim : _queryDelim);
+                    AppendDefaultImageType(sb, inQueryComponent);
                     inQueryComponent = true;
-                    sb.Append("d=");
-                    switch (_defaultImage)
-                    {
-                        case GravatarDefaultImage.Url:
-                            sb.Append(HttpUtility.UrlEncode(_defaultAvatar));
-                            break;
-                        case GravatarDefaultImage.Blank:
-                            sb.Append(_blankImage);
-                            break;
-                        case GravatarDefaultImage.Identicon:
-                            sb.Append(_identiconImage);
-                            break;
-                        case GravatarDefaultImage.MonsterId:
-                            sb.Append(_monsterIdImage);
-                            break;
-                        case GravatarDefaultImage.MysteryMan:
-                            sb.Append(_mysteryManImage);
-                            break;
-                        case GravatarDefaultImage.NotFound404:
-                            sb.Append(_404Image);
-                            break;
-                        case GravatarDefaultImage.Retro:
-                            sb.Append(_retroImage);
-                            break;
-                        case GravatarDefaultImage.Wavatar:
-                            sb.Append(_wavatarImage);
-                            break;
-                    }
                 }
 
                 if (_forceDefaultImage)
                 {
-                    sb.Append(inQueryComponent ? _querySubdelim : _queryDelim);
-                    sb.Append("f=y");
+                    AppendForceDefaultImageSwitch(sb, inQueryComponent);
                     inQueryComponent = true;
                 }
 
                 if (_rating != GravatarRating.G)
                 {
-                    sb.Append(inQueryComponent ? _querySubdelim : _queryDelim);
-                    sb.Append("r=");
-                    switch (_rating)
-                    {
-                        case GravatarRating.PG:
-                            sb.Append(_pgRating);
-                            break;
-                        case GravatarRating.R:
-                            sb.Append(_rRating);
-                            break;
-                        case GravatarRating.X:
-                            sb.Append(_xRating);
-                            break;
-                    }
+                    AppendRating(sb, inQueryComponent);
                 }
 
                 var result = sb.ToString();
                 return result;
+            }
+        }
+
+        private void AppendRating(StringBuilder sb, bool inQueryComponent)
+        {
+            sb.Append(inQueryComponent ? _querySubdelim : _queryDelim);
+            sb.Append("r=");
+            switch (_rating)
+            {
+                case GravatarRating.PG:
+                    sb.Append(_pgRating);
+                    break;
+                case GravatarRating.R:
+                    sb.Append(_rRating);
+                    break;
+                case GravatarRating.X:
+                    sb.Append(_xRating);
+                    break;
+            }
+        }
+
+        private static void AppendForceDefaultImageSwitch(StringBuilder sb, bool inQueryComponent)
+        {
+            sb.Append(inQueryComponent ? _querySubdelim : _queryDelim);
+            sb.Append("f=y");
+        }
+
+        private void AppendSize(StringBuilder sb)
+        {
+            sb.Append(_queryDelim);
+            sb.Append("s=");
+            sb.Append(_size);
+        }
+
+        private void AppendDefaultImageType(StringBuilder sb, bool inQueryComponent)
+        {
+            sb.Append(inQueryComponent ? _querySubdelim : _queryDelim);
+            sb.Append("d=");
+            switch (_defaultImage)
+            {
+                case GravatarDefaultImage.Url:
+                    sb.Append(HttpUtility.UrlEncode(_defaultAvatar));
+                    break;
+                case GravatarDefaultImage.Blank:
+                    sb.Append(_blankImage);
+                    break;
+                case GravatarDefaultImage.Identicon:
+                    sb.Append(_identiconImage);
+                    break;
+                case GravatarDefaultImage.MonsterId:
+                    sb.Append(_monsterIdImage);
+                    break;
+                case GravatarDefaultImage.MysteryMan:
+                    sb.Append(_mysteryManImage);
+                    break;
+                case GravatarDefaultImage.NotFound404:
+                    sb.Append(_404Image);
+                    break;
+                case GravatarDefaultImage.Retro:
+                    sb.Append(_retroImage);
+                    break;
+                case GravatarDefaultImage.Wavatar:
+                    sb.Append(_wavatarImage);
+                    break;
             }
         }
     }
