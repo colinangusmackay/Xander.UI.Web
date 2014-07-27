@@ -47,6 +47,9 @@
     <Compile Include="Utils\Hex.cs" />
     <Compile Include="Utils\Md5Hash.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Xander.UI.Web.nuspec" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
